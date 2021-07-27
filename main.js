@@ -26,7 +26,8 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
             "params": {
                 "q": "mongodb -filter:retweets filter:safe (from:codeSTACKr OR from:nraboy OR from:kukicado OR from:judy2k OR from:adriennetacke OR from:anaiyaraisin OR from:lauren_schaefer)",
                 "lang": "en",
-                "count": 100
+                "count": 100,
+                "tweet_mode": "extended"
             }
         });
         console.log(`Next Results: ${tweetResponse.data.search_metadata.next_results}`)

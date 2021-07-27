@@ -5,8 +5,8 @@ db.tweets.aggregate([
         "$search": {
             "index": "synsearch",
             "text": {
-                "query": "yeet",
-                "path": "text",
+                "query": "periodt",
+                "path": "full_text",
                 "synonyms": "slang"
             }
         }
@@ -14,7 +14,7 @@ db.tweets.aggregate([
     {
         "$project": {
             "_id": 1,
-            "text": 1,
+            "full_text": 1,
             "username": "$user.screen_name"
         }
     }
