@@ -24,13 +24,12 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
                 "Authorization": "Bearer " + tokenResponse.data.access_token
             },
             "params": {
-                "q": "mongodb -filter:retweets filter:safe -from:mongodb -from:realm",
+                "q": "mongodb -filter:retweets filter:safe (from:codeSTACKr OR from:nraboy OR from:kukicado OR from:judy2k OR from:adriennetacke OR from:anaiyaraisin OR from:lauren_schaefer)",
                 "lang": "en",
                 "count": 100
             }
         });
         console.log(`Next Results: ${tweetResponse.data.search_metadata.next_results}`)
-        //console.log(tweetResponse.data.statuses);
         const collection = mongoClient.db(process.env.MONGODB_DATABASE).collection(process.env.MONGODB_COLLECTION);
         tweetResponse.data.statuses = tweetResponse.data.statuses.map(status => {
             status._id = status.id;

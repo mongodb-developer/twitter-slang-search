@@ -1,0 +1,21 @@
+use("synonyms");
+
+db.tweets.aggregate([
+    {
+        "$search": {
+            "index": "synsearch",
+            "text": {
+                "query": "yeet",
+                "path": "text",
+                "synonyms": "slang"
+            }
+        }
+    },
+    {
+        "$project": {
+            "_id": 1,
+            "text": 1,
+            "username": "$user.screen_name"
+        }
+    }
+]);
